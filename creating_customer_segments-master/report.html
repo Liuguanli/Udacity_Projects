@@ -11876,7 +11876,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 显示数据集的一个描述</span>
@@ -12019,11 +12019,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：从数据集中选择三个你希望抽样的数据点的索引</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">181</span><span class="p">,</span><span class="mi">325</span><span class="p">,</span><span class="mi">306</span><span class="p">]</span>
 
 <span class="c1"># 为选择的样本建立一个DataFrame</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
@@ -12086,30 +12086,30 @@ div#notebook {
   <tbody>
     <tr>
       <th>0</th>
-      <td>7057</td>
-      <td>9810</td>
-      <td>9568</td>
-      <td>1762</td>
-      <td>3293</td>
-      <td>1776</td>
+      <td>112151</td>
+      <td>29627</td>
+      <td>18148</td>
+      <td>16745</td>
+      <td>4948</td>
+      <td>8550</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>16705</td>
-      <td>2037</td>
-      <td>3202</td>
-      <td>10643</td>
-      <td>116</td>
-      <td>1365</td>
+      <td>32717</td>
+      <td>16784</td>
+      <td>13626</td>
+      <td>60869</td>
+      <td>1272</td>
+      <td>5609</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3067</td>
-      <td>13240</td>
-      <td>23127</td>
-      <td>3941</td>
-      <td>9959</td>
-      <td>731</td>
+      <td>6468</td>
+      <td>12867</td>
+      <td>21570</td>
+      <td>1840</td>
+      <td>7558</td>
+      <td>1543</td>
     </tr>
   </tbody>
 </table>
@@ -12137,9 +12137,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
-<p>第一条数据是卖生鲜的，因为新鲜食物，牛奶和零食的购买量相对较多。而冷冻食物，清洁纸和熟食购买量相对小 但是也不是很好 很符合生鲜食品销售的特征。</p>
-<p>第二条数据是饭店，因为消费了大量的新鲜事物和冷冻食物。而且牛奶，零食和熟食也有一些，但是清洁纸买的很少。特征很像饭店。</p>
-<p>第三条数据是超市，因为买了大量的牛奶和零食，而且消费了大量的清洁纸，并且熟食却没买很多，很像超市。</p>
+<p>第一条数据是卖生鲜的，因为新鲜食物，牛奶和零食的购买量较多 远超过了均值而且大于75%的商家。很符合生鲜食品销售的特征。</p>
+<p>第二条数据是饭店，因为消费的新鲜食物量大于均值和75%的商家 而且冷冻食品的销量最大。而且牛奶，零食和熟食也有一些，但是清洁纸买的很少。特征很像饭店。</p>
+<p>第三条数据是超市，因为消费的牛奶、零食和清洁纸的量大于均值和75%的商家，而熟食的消耗量跟均值很接近，很像超市。</p>
 
 </div>
 </div>
@@ -12165,19 +12165,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：为DataFrame创建一个副本，用&#39;drop&#39;函数丢弃一个特征</span>
-<span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Grocery&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Delicatessen&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO：使用给定的特征作为目标，将数据分割成训练集和测试集</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grocery&#39;</span><span class="p">],</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Delicatessen&#39;</span><span class="p">],</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># TODO：创建一个DecisionTreeRegressor（决策树回归器）并在训练集上训练它</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">()</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># TODO：输出在测试集上的预测得分</span>
@@ -12199,7 +12199,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.680445155769
+<pre>-2.2547115372
 </pre>
 </div>
 </div>
@@ -12223,8 +12223,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
-<p>Fresh: score = -0.338711310561，Fresh对区分用户的消费习惯不是必要的。</p>
-<p>Grocery: score = 0.707174952746，Grocery对区分用户的消费习惯是必要的。</p>
+<p>Fresh: score = -0.385749710204，Fresh对区分用户的消费习惯不是必要的。</p>
+<p>Milk: score = 0.156275395017，Milk对区分用户的消费习惯是必要的。</p>
+<p>Grocery: score = 0.681884008544，Grocery对区分用户的消费习惯是必要的。</p>
+<p>Frozen: score = -0.210135890125，Frozen对区分用户的消费习惯不是必要的。</p>
+<p>Detergents_Paper: score = 0.271666980627，Detergents_Paper对区分用户的消费习惯是必要的。</p>
+<p>Delicatessen: score = -2.2547115372，Delicatessen对区分用户的消费习惯不是必要的。</p>
+<p>Fresh,Frozen,Delicatessen的决定系数是负的，所以不能够拟合数据。 其中Delicatessen的拟合系数最小 所以Delicatessen作为被移除的特性，</p>
 
 </div>
 </div>
@@ -14032,7 +14037,7 @@ juM4juM4juM4U+T/A4QlrUkuXgO6AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>Milk和Grocery，Grocery和Detergents_Paper 存在一定的相关度。 这个结果验证了Grocery对区分用户的消费习惯是必要的。</p>
-<p>这些特征数据服从正态分布，大部分的数据都集中在大约2000至4000附近。</p>
+<p>这些特征数据服从偏态分布，因为从图中可以看出平均数小于中数，因为频数分布的高峰位于一侧，不是位于中间。</p>
 
 </div>
 </div>
@@ -19462,10 +19467,10 @@ gg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>第一个主成分和第二个主成分表示了 0.7068的方差，前四个主成分表示了0.9311的方差</p>
-<p>第一个主成分正权权重最大的是Frozen，然后是Fresh。负权最小的是Delicatessen。客户主要消费的是冷冻食品，新鲜食物和熟食 代表了餐饮类的企业。</p>
-<p>第二个主成分权重都是负的，其中最大的是Detergents_Paper,然后是Grocery和Milk。代表了日常消费，所以说应该是零售企业。</p>
-<p>第三个主成分中Delicatessen的权重最大，其次是Frozen和Milk。 代表销售快餐的商店，因为熟食的销量和冷冻食材的销量很大，而且还有牛奶作为饮品。 但是没有新鲜食材。</p>
-<p>第四个主成分中权重最大的是Frozen，其次是Detergents_Paper和Grocery。 可能是冷饮店，或者以冷冻商品为主的零售企业。</p>
+<p>第一个主成分正权权重最大的是Frozen，然后是Fresh。负权最大的是Detergents_Paper。客户主要消费的是冷冻食品，新鲜食物而不买熟食 代表了餐饮类的客户。</p>
+<p>第二个主成分权重都是负的，其中最大的是Fresh,然后是Frozen和Delicatessen。说明不怎么买新鲜的和冷冻的食材。主要购买牛奶，零食和卫生纸。 应该是零售行业客户。</p>
+<p>第三个主成分中Delicatessen的权重最大，其次是Frozen，而负权重最大的是Fresh。 代表销售快餐的商店，因为熟食的销量和冷冻食材的销量很大，而且还有牛奶作为饮品。 而很少购买新鲜食材。</p>
+<p>第四个主成分中权重最大的是Frozen，其次是Detergents_Paper，而负权重最大的是Delicatessen。说明冷冻食材和卫生纸购买量大，但是熟食的购买量很小。 可能是生鲜类的销售客户。</p>
 
 </div>
 </div>
