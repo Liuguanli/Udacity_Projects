@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 检查你的Python版本</span>
@@ -11820,7 +11820,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 引入这个项目需要的库</span>
@@ -11876,7 +11876,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 显示数据集的一个描述</span>
@@ -12019,7 +12019,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：从数据集中选择三个你希望抽样的数据点的索引</span>
@@ -12223,13 +12223,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
-<p>Fresh: score = -0.385749710204，Fresh对区分用户的消费习惯不是必要的。</p>
+<p>Fresh: score = -0.385749710204，Fresh对区分用户的消费习惯是必要的。</p>
 <p>Milk: score = 0.156275395017，Milk对区分用户的消费习惯是必要的。</p>
-<p>Grocery: score = 0.681884008544，Grocery对区分用户的消费习惯是必要的。</p>
-<p>Frozen: score = -0.210135890125，Frozen对区分用户的消费习惯不是必要的。</p>
+<p>Grocery: score = 0.681884008544，Grocery对区分用户的消费习惯不是必要的。</p>
+<p>Frozen: score = -0.210135890125，Frozen对区分用户的消费习惯是必要的。</p>
 <p>Detergents_Paper: score = 0.271666980627，Detergents_Paper对区分用户的消费习惯是必要的。</p>
-<p>Delicatessen: score = -2.2547115372，Delicatessen对区分用户的消费习惯不是必要的。</p>
-<p>Fresh,Frozen,Delicatessen的决定系数是负的，所以不能够拟合数据。 其中Delicatessen的拟合系数最小 所以Delicatessen作为被移除的特性，</p>
+<p>Delicatessen: score = -2.2547115372，Delicatessen对区分用户的消费习惯是必要的。</p>
+<p>Fresh,Frozen,Delicatessen的决定系数是负的，所以不能够通过其他数据拟合出来。 而Milk,Grocery和Detergents_Paper可以通过其他数据拟合，而且Grocery的决定系数高，所以可以别移除。</p>
 
 </div>
 </div>
@@ -14037,7 +14037,7 @@ juM4juM4juM4U+T/A4QlrUkuXgO6AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>Milk和Grocery，Grocery和Detergents_Paper 存在一定的相关度。 这个结果验证了Grocery对区分用户的消费习惯是必要的。</p>
-<p>这些特征数据服从偏态分布，因为从图中可以看出平均数小于中数，因为频数分布的高峰位于一侧，不是位于中间。</p>
+<p>这些特征数据服从偏态分布，因为频数分布的高峰位于一侧，不是位于中间。而且从图像和前面的数据统计表格中可以看出平均数大于中数，中数又大于众数，所以服从正偏态分布。</p>
 
 </div>
 </div>
@@ -19467,10 +19467,12 @@ gg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>第一个主成分和第二个主成分表示了 0.7068的方差，前四个主成分表示了0.9311的方差</p>
-<p>第一个主成分正权权重最大的是Frozen，然后是Fresh。负权最大的是Detergents_Paper。客户主要消费的是冷冻食品，新鲜食物而不买熟食 代表了餐饮类的客户。</p>
-<p>第二个主成分权重都是负的，其中最大的是Fresh,然后是Frozen和Delicatessen。说明不怎么买新鲜的和冷冻的食材。主要购买牛奶，零食和卫生纸。 应该是零售行业客户。</p>
-<p>第三个主成分中Delicatessen的权重最大，其次是Frozen，而负权重最大的是Fresh。 代表销售快餐的商店，因为熟食的销量和冷冻食材的销量很大，而且还有牛奶作为饮品。 而很少购买新鲜食材。</p>
-<p>第四个主成分中权重最大的是Frozen，其次是Detergents_Paper，而负权重最大的是Delicatessen。说明冷冻食材和卫生纸购买量大，但是熟食的购买量很小。 可能是生鲜类的销售客户。</p>
+<p>影响最大的特征应
+原来的特征在这个新的特征上的权重值代表着什么，进一步地，你能够说出每一个维度将代表着怎么样的消费类型。</p>
+<p>第一个主成分影响最大的特征是Detergents_Paper，其次是Grocery和Milk。因为它们的权重为负，意味着客户的消费习惯有很大可能买更少的卫生纸，零食和牛奶。所以应该是饭店。</p>
+<p>第二个主成分影响最大的特征是Fresh，然后是Frozen和Delicatessen。因为它们的权重为负，意味着客户的消费习惯有很大可能买更少的Fresh，冷冻食材和熟食。 所以应该是零售店。</p>
+<p>第三个主成分中Delicatessen和Fresh的权重最大。而Fresh的权重为负Delicatessen的权重为正，意味着客户的消费习惯有很大可能买更少的新鲜食物，而买更多的熟食，所以可以能快餐店。</p>
+<p>第四个主成分中权重最大的是Frozen，其次是Detergents_Paper，而负权重最大的是Delicatessen。意味着客户的消费习惯有很大可能购买冷冻食材和卫生纸，但是购买熟食的可能性很小。 可能是生鲜类的销售客户。</p>
 
 </div>
 </div>
