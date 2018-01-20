@@ -40,7 +40,7 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
         
-        if testing == True:
+        if testing:
             self.epsilon = 0
             self.alpha = 0
         else:
@@ -95,7 +95,7 @@ class LearningAgent(Agent):
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
 
-        if self.learning==True:
+        if self.learning:
             if not state in self.Q.keys():
                 self.Q[state]={None:0.0,'forward':0.0,'left':0.0,'right':0.0}
 
@@ -129,8 +129,7 @@ class LearningAgent(Agent):
             else:
                 maxQ = self.get_maxQ(state)
                 keys = [key for key, value in self.Q[state].items() if maxQ == value]
-                action=keys[random.randint(0,len(keys)-1)]
-                # action = random.choice(keys)
+                action=random.choice(keys)
         return action
 
 
