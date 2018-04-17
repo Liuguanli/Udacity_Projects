@@ -1,0 +1,146 @@
+# Machine Learning Engineer Nanodegree
+## Capstone Proposal
+GuanLi Liu
+April 16th 2018
+
+## Proposal
+_(approx. 2-3 pages)_
+
+### Domain Background
+_(approx. 1-2 paragraphs)_
+
+Forecast Rossmann Store Sales Project is a Kaggle competition which forecasts sales using store, promotion, and competitor data. In statistics, prediction is a part of statistical inference. One particular approach to such inference is known as predictive inference, but the prediction can be undertaken within any of the several approaches to statistical inference.When information is transferred across time, often to specific points in time, the process is known as forecasting.
+
+It is obviously that this is a time series related problem. A time series is a sequence taken at successive equally spaced points in time. Thus it is a sequence of discrete-time data. 【Wiki】
+Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data. Time series forecasting is the use of a model to predict future values based on previously observed values. So, in this problem we should analysis the dataset first and then forecast the result.
+
+Time series forecasting is essential in our daily life like the temperature forecast is quite convenient for our life. The forecast of stock price is helpful for some business man to earn more money. Also the selling forecast can help the merchants to cut cost.
+
+
+---
+
+In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+
+### Problem Statement
+_(approx. 1 paragraph)_
+
+Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their daily sales for up to six weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. The goal of the Project is to predict 6 weeks of daily Sales in 1115 stores located in different parts of Germany based on 2.5 years of historical daily sales. I suppose the problem can be solved by using Random Forest.
+
+The training algorithm for random forests applies the general technique of bootstrap aggregating, or bagging, to tree learners. Given a training set \\(X = x1, ..., xn\\) with responses Y = y1, ..., yn, bagging repeatedly (B times) selects a random sample with replacement of the training set and fits trees to these samples:
+
+For b = 1, ..., B:
+Sample, with replacement, n training examples from X, Y; call these Xb, Yb.
+Train a classification or regression tree fb on Xb, Yb.
+After training, predictions for unseen samples x' can be made by averaging the predictions from all the individual regression trees on x':
+{\displaystyle {\hat {f}}={\frac {1}{B}}\sum _{b=1}^{B}f_{b}(x')}
+
+Submissions are evaluated on the Root Mean Square Percentage Error (RMSPE). The RMSPE is calculated as RMSPE=1n∑i=1n(yi−y^iyi)2−−−−−−−−−−−−−−−⎷,where y_i denotes the sales of a single store on a single day and yhat_i denotes the corresponding prediction. Any day and store with 0 sales is ignored in scoring.
+
+---
+
+In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+
+### Datasets and Inputs
+_(approx. 2-3 paragraphs)_
+
+There are four Files given by Kaggle including:
+train.csv - historical data including Sales
+
+test.csv - historical data excluding Sales
+
+sample_submission.csv - a sample submission file in the correct format
+
+store.csv - supplemental information about the stores
+
+
+Data fields
+
+Most of the fields are self-explanatory.
+Like:
+In train.csv
+Store, DayOfWeek, Date, Sales, Customes, Open, Promo, StateHoliday, SchoolHoliday
+In test.csv
+Id	Store	DayOfWeek	Date	Open	Promo	StateHoliday	SchoolHoliday
+In sample_submission.csv
+Id	Sales
+In store.csv
+Store	StoreType	Assortment	CompetitionDistance	CompetitionOpenSinceMonth	CompetitionOpenSinceYear	Promo2	Promo2SinceWeek	Promo2SinceYear	PromoInterval
+
+
+The following are descriptions for those that aren't.
+
+> * Id - an Id that represents a (Store, Date) duple within the test set
+> * Store - a unique Id for each store
+> * Sales - the turnover for any given day (this is what you are predicting)
+> * Customers - the number of customers on a given day
+> * Open - an indicator for whether the store was open: 0 = closed, 1 = open
+> * StateHoliday - indicates a state holiday. Normally all stores, with few exceptions, are closed on state holidays. Note that all schools are closed on public holidays and weekends. a = public holiday, b = Easter holiday, c = Christmas, 0 = None
+> * SchoolHoliday - indicates if the (Store, Date) was affected by the closure of public schools
+> * StoreType - differentiates between 4 different store models: a, b, c, d
+> * Assortment - describes an assortment level: a = basic, b = extra, c = extended
+> * CompetitionDistance - distance in meters to the nearest competitor store
+> * CompetitionOpenSince[Month/Year] - gives the approximate year and month of the time the nearest competitor was opened
+> * Promo - indicates whether a store is running a promo on that day
+> * Promo2 - Promo2 is a continuing and consecutive promotion for some stores: 0 = store is not participating, 1 = store is participating
+> * Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2
+> * PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
+
+所有字段是如何影响结果的。
+每个字段对结果可能的影响是什么。
+当前数据集存在的问题是什么。 可以通过画图给出来！！！
+
+输入的数据有什么特征，后面怎么使用数据集和定义输入。。。 还有是否想某个字段 独热编码，方便使用。。。
+
+---
+
+In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+
+### Solution Statement
+_(approx. 1 paragraph)_
+
+给出一个问题的解决方案，
+
+Entity Embedding；神经网络
+
+---
+
+In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+
+### Benchmark Model
+_(approximately 1-2 paragraphs)_
+
+https://www.kaggle.com/shearerp/store-dayofweek-promo-0-13952/code
+There were two simple benchmark models (median and geometric mean) on the competition forum which I used as a starting point.
+
+---
+
+In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+
+### Evaluation Metrics
+_(approx. 1-2 paragraphs)_
+
+In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+
+### Project Design
+_(approx. 1 page)_
+
+整个工作的流程
+
+如何分析数据
+
+可以使用什么方法，我应该使用什么方法
+
+图，伪代码，可视化 来描述项目的设计。
+
+
+In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+
+-----------
+
+**Before submitting your proposal, ask yourself. . .**
+
+- Does the proposal you have written follow a well-organized structure similar to that of the project template?
+- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
+- Would the intended audience of your project be able to understand your proposal?
+- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
+- Are all the resources used for this project correctly cited and referenced?
