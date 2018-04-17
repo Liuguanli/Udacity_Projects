@@ -16,21 +16,12 @@ Time series analysis comprises methods for analyzing time series data in order t
 
 Time series forecasting is essential in our daily life like the temperature forecast is quite convenient for our life. The forecast of stock price is helpful for some business man to earn more money. Also the selling forecast can help the merchants to cut cost.
 
-
----
-
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
-
 ### Problem Statement
 _(approx. 1 paragraph)_
 
 Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their daily sales for up to six weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. The goal of the Project is to predict 6 weeks of daily Sales in 1115 stores located in different parts of Germany based on 2.5 years of historical daily sales. I suppose the problem can be solved by using Random Forest.
 
 The training algorithm for random forests applies the general technique of bootstrap aggregating, or bagging, to tree learners. Given a training set $X = x_{1}, ..., x_{n}$ with responses $Y = y_{1}, ..., y_{n}$, bagging repeatedly selects a random sample with replacement of the training set and fits trees to these samples: For $b = 1, ..., B$ : Sample, with replacement, n training examples from $X$, $Y$; call these $X_{b}$, $Y_{b}$. Train a classification or regression tree $f_{b}$ on $X_{b}$, $Y_{b}$. After training, predictions for unseen samples $x'$ can be made by averaging the predictions from all the individual regression trees on $x'$: $ {\displaystyle {\hat {f}}={\frac {1}{B}}\sum _{b=1}^{B}f_{b}(x')} $. Submissions are evaluated on the Root Mean Square Percentage Error (RMSPE) which is introduced in the official website. The RMSPE is calculated as $ RMSPE=\sqrt{\frac{1}{n}\cdot \sum_{i=1}^{n}\left ( \frac{^{y_{i} - \hat{y_{i}}}}{y_{i}} \right )^{2}} $.  where $y_{i}$ denotes the sales of a single store on a single day and $\hat{y_{i}}$ denotes the corresponding prediction. Any day and store with 0 sales is ignored in scoring.
-
----
-
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
@@ -40,7 +31,6 @@ There are four data Files given by Kaggle including:
 > * test.csv - historical data excluding Sales
 > * sample_submission.csv - a sample submission file in the correct format
 > * store.csv - supplemental information about the stores
-
 
 #### Data fields:
 Most of the fields are self-explanatory like DayOfWeek and Date. While the following are descriptions for those that aren't.
@@ -61,24 +51,9 @@ Most of the fields are self-explanatory like DayOfWeek and Date. While the follo
 > * Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2
 > * PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
 
-All of the datasets should be used and we can choose some essential information from them. 
+All of the datasets should be used and we can choose some essential information from them.Customers and Open is of vital importance. Because they are positively correlated with sales. Besides, the imformation about promotion is also useful because people tend to buy more goods. The type, Competition Distance, holiday also have some influence on the sale. So, in the following time, I will try those given information to predict the sale.
 
-Customers and Open is of vital importance. Because they are positively correlated with sales. Besides, the imformation about promotion is also useful because people tend to buy more goods. The type, Competition Distance, holiday also have some influence on the sale. So, in the following time, I will try those given information to predict the sale.
-
-While there are some flaws in the dataset. :
-
-Also we have to deal with the value of some fields which are not suitable for the train model. Like:
-
-
-所有字段是如何影响结果的。
-每个字段对结果可能的影响是什么。
-当前数据集存在的问题是什么。 可以通过画图给出来！！！
-
-输入的数据有什么特征，后面怎么使用数据集和定义输入。。。 还有是否想某个字段 独热编码，方便使用。。。
-
----
-
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+However, there are some flaws in the dataset. For example, as I watched in the forum that Store 622 has 11 missing values in the Open columns and most people assume the store is open. If it's closed then sales will be 0 and it won't count toward the score. But if it's open and you predict 0 then you're in for some heavy penalty. Additionally, there is a 6 month gap where we have a smaller number of stores reporting sales revenue. We also have to impute the missing values to have a stable result. Finally, we have to deal with the value of some fields which are not suitable for the train model. Like: StoreType and Assortment. The values of them are letters we should change letter to valus like 1-4 for StoreType and 1-3 for Assortment respectively.
 
 ### Solution Statement
 _(approx. 1 paragraph)_
@@ -129,4 +104,3 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 - Would the intended audience of your project be able to understand your proposal?
 - Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
 - Are all the resources used for this project correctly cited and referenced?
-
