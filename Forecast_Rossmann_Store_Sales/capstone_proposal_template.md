@@ -26,15 +26,7 @@ _(approx. 1 paragraph)_
 
 Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their daily sales for up to six weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. The goal of the Project is to predict 6 weeks of daily Sales in 1115 stores located in different parts of Germany based on 2.5 years of historical daily sales. I suppose the problem can be solved by using Random Forest.
 
-The training algorithm for random forests applies the general technique of bootstrap aggregating, or bagging, to tree learners. Given a training set \\(X = x1, ..., xn\\) with responses Y = y1, ..., yn, bagging repeatedly (B times) selects a random sample with replacement of the training set and fits trees to these samples:
-
-For b = 1, ..., B:
-Sample, with replacement, n training examples from X, Y; call these Xb, Yb.
-Train a classification or regression tree fb on Xb, Yb.
-After training, predictions for unseen samples x' can be made by averaging the predictions from all the individual regression trees on x':
-{\displaystyle {\hat {f}}={\frac {1}{B}}\sum _{b=1}^{B}f_{b}(x')}
-
-Submissions are evaluated on the Root Mean Square Percentage Error (RMSPE). The RMSPE is calculated as RMSPE=1n∑i=1n(yi−y^iyi)2−−−−−−−−−−−−−−−⎷,where y_i denotes the sales of a single store on a single day and yhat_i denotes the corresponding prediction. Any day and store with 0 sales is ignored in scoring.
+The training algorithm for random forests applies the general technique of bootstrap aggregating, or bagging, to tree learners. Given a training set $X = x_{1}, ..., x_{n}$ with responses $Y = y_{1}, ..., y_{n}$, bagging repeatedly selects a random sample with replacement of the training set and fits trees to these samples: For $b = 1, ..., B$ : Sample, with replacement, n training examples from $X$, $Y$; call these $X_{b}$, $Y_{b}$. Train a classification or regression tree $f_{b}$ on $X_{b}$, $Y_{b}$. After training, predictions for unseen samples $x'$ can be made by averaging the predictions from all the individual regression trees on $x'$: $ {\displaystyle {\hat {f}}={\frac {1}{B}}\sum _{b=1}^{B}f_{b}(x')} $. Submissions are evaluated on the Root Mean Square Percentage Error (RMSPE) which is introduced in the official website. The RMSPE is calculated as $ RMSPE=\sqrt{\frac{1}{n}\cdot \sum_{i=1}^{n}\left ( \frac{^{y_{i} - \hat{y_{i}}}}{y_{i}} \right )^{2}} $.  where $y_{i}$ denotes the sales of a single store on a single day and $\hat{y_{i}}$ denotes the corresponding prediction. Any day and store with 0 sales is ignored in scoring.
 
 ---
 
@@ -43,31 +35,15 @@ In this section, clearly describe the problem that is to be solved. The problem 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
 
-There are four Files given by Kaggle including:
-train.csv - historical data including Sales
-
-test.csv - historical data excluding Sales
-
-sample_submission.csv - a sample submission file in the correct format
-
-store.csv - supplemental information about the stores
+There are four data Files given by Kaggle including:
+> * train.csv - historical data including Sales
+> * test.csv - historical data excluding Sales
+> * sample_submission.csv - a sample submission file in the correct format
+> * store.csv - supplemental information about the stores
 
 
-Data fields
-
-Most of the fields are self-explanatory.
-Like:
-In train.csv
-Store, DayOfWeek, Date, Sales, Customes, Open, Promo, StateHoliday, SchoolHoliday
-In test.csv
-Id	Store	DayOfWeek	Date	Open	Promo	StateHoliday	SchoolHoliday
-In sample_submission.csv
-Id	Sales
-In store.csv
-Store	StoreType	Assortment	CompetitionDistance	CompetitionOpenSinceMonth	CompetitionOpenSinceYear	Promo2	Promo2SinceWeek	Promo2SinceYear	PromoInterval
-
-
-The following are descriptions for those that aren't.
+#### Data fields:
+Most of the fields are self-explanatory like DayOfWeek and Date. While the following are descriptions for those that aren't.
 
 > * Id - an Id that represents a (Store, Date) duple within the test set
 > * Store - a unique Id for each store
@@ -84,6 +60,15 @@ The following are descriptions for those that aren't.
 > * Promo2 - Promo2 is a continuing and consecutive promotion for some stores: 0 = store is not participating, 1 = store is participating
 > * Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2
 > * PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
+
+All of the datasets should be used and we can choose some essential information from them. 
+
+Customers and Open is of vital importance. Because they are positively correlated with sales. Besides, the imformation about promotion is also useful because people tend to buy more goods. The type, Competition Distance, holiday also have some influence on the sale. So, in the following time, I will try those given information to predict the sale.
+
+While there are some flaws in the dataset. :
+
+Also we have to deal with the value of some fields which are not suitable for the train model. Like:
+
 
 所有字段是如何影响结果的。
 每个字段对结果可能的影响是什么。
@@ -144,3 +129,4 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 - Would the intended audience of your project be able to understand your proposal?
 - Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
 - Are all the resources used for this project correctly cited and referenced?
+
